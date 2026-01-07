@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "id": "apt1",
+    "propertyName": "West Campus Flats",
+    "location": "Austin, TX",
+    "rent": 1495,
+    "googleMapsUrl": "https://maps.google.com",
+    "email": "leasing@westcampusflats.com",
+    "phone": "+1 (512) 555-0123",
+    "website": "https://example.com",
+    "imageUrl": ""
+  },
+  {
+    "id": "apt2",
+    "propertyName": "Riverside Lofts",
+    "location": "Austin, TX",
+    "rent": 1320,
+    "googleMapsUrl": "https://maps.google.com",
+    "email": "info@riversidelofts.com",
+    "phone": "+1 (512) 555-0456",
+    "website": "https://example.com",
+    "imageUrl": ""
+  }
+]
