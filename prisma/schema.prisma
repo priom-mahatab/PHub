@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  titleFieldId String?
+
+  fields    FieldDefinition[]
+  entries   Entry[]
+}
+
+model FieldDefinition {
+  id         String   @id @default(cuid())
+  categoryId String
+  name       String
+  type       FieldType
+  required   Boolean  @default(false)
+  order      Int      @default(0)
+
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  values     FieldValue[]
+}
+
+model Entry {
+  id         String   @id @default(cuid())
+  categoryId String
+  createdAt  DateTime @default(now())
+
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  values     FieldValue[]
+}
+
+model FieldValue {
+  id        String @id @default(cuid())
+  entryId   String
+  fieldId   String
+  value     String
+
+  entry     Entry           @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  field     FieldDefinition @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@unique([entryId, fieldId])
+}
+
+enum FieldType {
+  text
+  number
+  url
+  email
+  phone
+}
