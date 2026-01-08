@@ -1,10 +1,32 @@
 "use client";
 
+type Categories = {
+    id: string,
+    name: string,
+    path: string
+}
+
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
+  const [categories, setCategories] = useState<Categories[]>([]);
+
+  useEffect(() => {
+    fetch("/api/categories")
+        .then((r) => r.json())
+        .then(setCategories)
+        .catch(() => setCategories([]))
+  }, []);
+
+  async function deleteCategory(id: string) {
+    await fetch(`/api/categories?id=${id}`, {
+        method: "DELETE"
+    });
+
+    setCategories((prev) => prev.filter((c) => c.id !== id))
+  }
 
   return (
     <>
@@ -48,22 +70,43 @@ export default function Sidebar() {
           >
             Home Page
           </Link>
-          <Link
-            href="/apartments"
-            onClick={() => setOpen(false)}
-            className="block rounded-lg px-3 py-2 hover:bg-zinc-900"
-          >
-            Apartments
-          </Link>
+
+          {categories.map((c: any) => (
+            <div key={c.id}
+                className="flex items-center justify-between rounded-lg hover:bg-zinc-900">
+            
+                <Link 
+                    href={c.path}
+                    onClick={() => setOpen(false)}
+                    className="flex-1 px-3 py-2"
+                >
+                    {c.name}
+                </Link>
+
+                <button 
+                    onClick={
+                        () => {
+                            const ok = confirm(`Delete "${c.name}"?`);
+                            if (ok) deleteCategory(c.id);
+                        }
+                    }
+                    className="px-3 text-zinc-400 hover:text-red-400"
+                    aria-label={`Delete ${c.name}`}
+                >
+                    ✕
+                </button>
+            </div>
+          ))}
+          
 
           {/* Placeholder for later */}
-          <button
-            type="button"
+          <Link
+            href="/categories/new"
             className="w-full text-left rounded-lg px-3 py-2 border border-dashed border-zinc-700 text-zinc-300 hover:bg-zinc-900"
-            onClick={() => alert("Next step: Add Category page")}
+            onClick={() => setOpen(false)}
           >
             + Add category
-          </button>
+          </Link>
         </div>
       </div>
     </>
