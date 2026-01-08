@@ -23,7 +23,7 @@ export default function Sidebar() {
           aria-label="Close sidebar overlay"
         />
       )}
-      
+
       <div
         className={`fixed top-0 left-0 h-full w-72 bg-zinc-950 border-r border-zinc-800 p-4 transform transition-transform ${
           open ? "translate-x-0" : "-translate-x-full"
@@ -41,6 +41,13 @@ export default function Sidebar() {
         </div>
 
         <div className="mt-4 space-y-2">
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className="block rounded-lg px-3 py-2 hover:bg-zinc-900"
+          >
+            Home Page
+          </Link>
           <Link
             href="/apartments"
             onClick={() => setOpen(false)}

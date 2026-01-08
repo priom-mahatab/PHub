@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/Sidebar";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="flex items-center gap-4 px-6 py-5 border-b border-zinc-800">
+          <Sidebar />
+          <Link href="/" className="text-2xl font-bold tracking-tight">PHub</Link>
+        </header>
         {children}
       </body>
     </html>
