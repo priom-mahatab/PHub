@@ -20,5 +20,16 @@
     "phone": "+1 (512) 555-0456",
     "website": "https://example.com",
     "imageUrl": ""
+  },
+  {
+    "id": "apt_1767842312798",
+    "propertyName": "Forest Creek Apartments",
+    "location": "Austin, TX",
+    "rent": 1000,
+    "googleMapsUrl": "https://maps.google.com",
+    "email": "info@forestcreek.com",
+    "phone": "+1 (512) 555-1234",
+    "website": "https://example.com",
+    "imageUrl": ""
   }
 ]
