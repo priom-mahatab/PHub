@@ -22,14 +22,14 @@
     "imageUrl": ""
   },
   {
-    "id": "apt_1767842312798",
+    "id": "apt_1767938762086",
     "propertyName": "Forest Creek Apartments",
     "location": "Austin, TX",
     "rent": 1000,
-    "googleMapsUrl": "https://maps.google.com",
-    "email": "info@forestcreek.com",
-    "phone": "+1 (512) 555-1234",
-    "website": "https://example.com",
+    "googleMapsUrl": "www.google.com",
+    "email": "forest@creek.com",
+    "phone": "+1 512 713 3339",
+    "website": "www.google.com",
     "imageUrl": ""
   }
 ]

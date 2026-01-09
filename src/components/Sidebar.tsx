@@ -47,7 +47,7 @@ export default function Sidebar() {
       )}
 
       <div
-        className={`fixed top-0 left-0 h-full w-72 bg-zinc-950 border-r border-zinc-800 p-4 transform transition-transform ${
+        className={`fixed top-0 left-0 z-50 h-full w-72 bg-zinc-950 border-r border-zinc-800 p-4 transform transition-transform ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -102,7 +102,7 @@ export default function Sidebar() {
           {/* Placeholder for later */}
           <Link
             href="/categories/new"
-            className="w-full text-left rounded-lg px-3 py-2 border border-dashed border-zinc-700 text-zinc-300 hover:bg-zinc-900"
+            className="mt-3 block w-full text-left rounded-lg px-3 py-2 border border-dashed border-zinc-700 text-zinc-300 hover:bg-zinc-900"
             onClick={() => setOpen(false)}
           >
             + Add category
