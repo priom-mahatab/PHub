@@ -9,4 +9,5 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Category'
+export type * from './models/Record'
 export type * from './commonInputTypes'

@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Category: 'Category'
+  Category: 'Category',
+  Record: 'Record'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,6 +80,19 @@ export const CategoryScalarFieldEnum = {
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const RecordScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  categoryId: 'categoryId',
+  coverEmoji: 'coverEmoji',
+  coverColor: 'coverColor',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RecordScalarFieldEnum = (typeof RecordScalarFieldEnum)[keyof typeof RecordScalarFieldEnum]
 
 
 export const SortOrder = {

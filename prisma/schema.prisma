@@ -13,4 +13,21 @@ model Category {
   icon String? 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  records Record[]
+}
+
+model Record {
+  id String @id @default(cuid())
+  title String
+  categoryId String
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  coverEmoji String?
+  coverColor String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
 }

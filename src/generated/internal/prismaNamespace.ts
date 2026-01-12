@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Category: 'Category'
+  Category: 'Category',
+  Record: 'Record'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "category"
+    modelProps: "category" | "record"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Record: {
+      payload: Prisma.$RecordPayload<ExtArgs>
+      fields: Prisma.RecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>
+        }
+        findFirst: {
+          args: Prisma.RecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>
+        }
+        findMany: {
+          args: Prisma.RecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>[]
+        }
+        create: {
+          args: Prisma.RecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>
+        }
+        createMany: {
+          args: Prisma.RecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>[]
+        }
+        delete: {
+          args: Prisma.RecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>
+        }
+        update: {
+          args: Prisma.RecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.RecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.RecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecordPayload>
+        }
+        aggregate: {
+          args: Prisma.RecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRecord>
+        }
+        groupBy: {
+          args: Prisma.RecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecordCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -526,6 +601,19 @@ export const CategoryScalarFieldEnum = {
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const RecordScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  categoryId: 'categoryId',
+  coverEmoji: 'coverEmoji',
+  coverColor: 'coverColor',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RecordScalarFieldEnum = (typeof RecordScalarFieldEnum)[keyof typeof RecordScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -695,6 +783,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   category?: Prisma.CategoryOmit
+  record?: Prisma.RecordOmit
 }
 
 /* Types for Logging */

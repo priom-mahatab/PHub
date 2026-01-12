@@ -44,3 +44,8 @@ export { Prisma }
  * 
  */
 export type Category = Prisma.CategoryModel
+/**
+ * Model Record
+ * 
+ */
+export type Record = Prisma.RecordModel
