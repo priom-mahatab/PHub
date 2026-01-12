@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: phub_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: phub
+      POSTGRES_PASSWORD: phubpassword
+      POSTGRES_DB: phub
+    volumes:
+      - phub_pgdata:/var/lib/postgresql/data
+
+volumes:
+  phub_pgdata:
